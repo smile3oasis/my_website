@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="pos">
+  <img src="static/images/Black-LogoPNG.png" alt="img" height="250" width="250" >
+</div>
+
+<div class="centerstage">
+  {% for post in post_list %}
+
+    <div class="post">
+      <h1> <a id=myc href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a> </h1>
+
+      <div class="date" id=myp>
+        <p>Published on: {{post.published_date|date:"D M Y"}} </p>
+      </div>
+        <a id=myc href="{% url 'post_detail' pk=post.pk%}">Comments: {{post.approve_comments.count}}</a>
+    </div>
+
+  {% endfor %}
+
+</div>
+{% endblock %}
